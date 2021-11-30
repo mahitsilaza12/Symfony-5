@@ -1,0 +1,3 @@
+parameters:
+  app.mail_from_name : 'Penterest'
+  app.mail_from_address : 'hello@gmail.com'

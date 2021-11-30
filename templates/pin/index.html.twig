@@ -1,0 +1,44 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Hello PinController!{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper">
+    {% if(pins|length >0) %}
+    <h1 class=" mt-4 text-center">{{pluralize( pins |length, 'pin' )}} ! ✅</h1>
+        {% for pins in pins|batch(3) %}
+        <div class="row mb-5">
+            {% for pin in pins %}
+                <div class="col-md-4">
+                    <article class=" pin bg-white rounded shadow">
+                        <div class="mw-100 overflow-hidden">
+                            <a href="{{path('app_pins_edit',{id:pin.id})}}">
+                                <img style="width: 200px;height: 200px; box-shadow: black;" src="{{ (pin.imageName ? vich_uploader_asset(pin) : asset('imagedefault/default.jpg')) }}" alt="{{ pin.title}}"
+                                     class="w-100 rounded-top" >
+                            </a>
+                        </div>
+
+                        <h1 class="  pt-3 pl-3 mt-3" > <a class="text-secondary text-decoration-none " href="{{path('app_pins_show',{id : pin.id} )}}"> {{pin.title}}</a></h1>
+{#                        <p>{{pin.description|u.truncate(20,'...', true)}}</p>#}
+{#                        <p>Submitted {{ pin.createdAt|date }}</p>#}
+                        <p class=" pl-3 pb-3 text-center  text-muted" >Submitted {{ pin.user.fullname }}</p>
+                        <a href="{{ path('app_pins_delete',{id:pin.id}) }}" onclick="confirm('Assurer vous?') " class=" mb-3 btn-btn-danger">&times;</a>
+
+                    </article>
+                </div>
+
+            {% else %}
+                <article>
+                    <h1>pas de pin dans la bdd</h1>
+                </article>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+    {% else %}
+        <p class="h1 mt-5 text-center">No pins dans la bdd <a href="{{ path('app_create') }}">Creation new pin</a></p>
+    {% endif %}
+</div>
+{% endblock %}

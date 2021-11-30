@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title'change password' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h1 class="my-5 text-center">change password</h1>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+            <button type="submit" class="btn btn-success btn-lg btn-block">Update password</button>
+        {{ form_end(form) }}
+
+        </div>
+    </div>
+
+{% endblock %}

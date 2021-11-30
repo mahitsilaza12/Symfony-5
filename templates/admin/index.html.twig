@@ -1,0 +1,11 @@
+{% extends 'layouts/base.html.twig' %}
+{% block body %}
+<p>sound system</p>
+
+    {% if is_granted('ROLE_ADMIN') %}
+    <P>je suis un admin</P>
+    {% endif %}
+    {% if is_granted('ROLE_USER') %}
+        <P>je suis un uutilisateur simple</P>
+    {% endif %}
+{% endblock %}

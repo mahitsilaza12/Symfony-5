@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600;1,900&display=swap');
+//@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
+
+@import "shared/variabl.scss";
+@import "~bootstrap";
+
+
+body {
+    font-family: $font, sans-serif;
+
+}
+.alert {
+    padding: 10px;
+    color: white;
+    text-align: center;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+
+    &.alert-success {
+        background-color: green;
+    }
+    &.alert-danger {
+        background-color: red;
+    }
+
+    &.alert-info {
+        background-color: blue;
+    }
+}
+  .vich-image {
+      .form-check{
+          margin-top: 20px;
+      }
+      img{
+            margin-buttom: 30px;
+            @extend .rounded;
+            @extend .shadow;
+      }
+  }
+  .pin img{
+        transition: transform 0.3s ease-out;
+      &:hover{
+          tranform:scale(1.075);
+      }
+  }

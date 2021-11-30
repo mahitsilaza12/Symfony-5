@@ -1,0 +1,25 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title'Update user' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h1 class="my-5 text-center">update profil</h1>
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col-md-6">
+                    {{ form_row(form.firstName) }}
+                </div>
+                <div class="col-md-6">
+                    {{ form_row(form.lastName) }}
+                </div>
+                </div>
+            {{ form_row(form.email) }}
+            <button class="btn btn-success btn-lg btn-block" type="submit">Update</button>
+            {{ form_end(form) }}
+
+        </div>
+    </div>
+
+{% endblock %}

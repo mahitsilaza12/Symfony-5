@@ -1,0 +1,20 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title'Profil' %}
+
+{% block body %}
+        <div class="row">
+            <div class="col-md-6 mx-auto text-center">
+                <h1 class="my-5">Profil</h1>
+{#                <img class="shadow rounded-circle" {{ app.user.gravatar }} alt="{{ app.user.fullname }}'s Avatar">#}
+
+                <p class="lead">{{ app.user.email }}</p>
+                <h2>{{ app.user.fullname }}</h2>
+                <p><small>Account created on {{ app.user.createdAt|date() }}</small></p>
+                <a href="{{ path('app_account_edit') }}">Edit count</a> <a href="{{ path('app_account_chanegemdp') }}">Change password</a>
+
+
+            </div>
+        </div>
+
+{% endblock %}

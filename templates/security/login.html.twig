@@ -1,0 +1,48 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h1 class="mt-5 text-center">Please sign in</h1>
+            <p class="mb-3 text-center text-muted" >votre pin vas attendre a vous</p>
+            <form method="post">
+                {% if error %}
+{#                    {{ dump(error.messageData) }}#}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="_remember_me"> Remember me
+                        </label>
+                    </div>
+                    <a href="{{ path('app_forgot_password_request') }}">Forgot password</a>
+                </div>
+                
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                  <button class="btn btn-lg btn-primary" type="submit">
+                    Sign in
+                </button>
+                <p class="mt-5 mb-3 text-center text-muted">Vous n'ete pas de compte <a href="{{ path('app_register') }}">Create new compte</a></p>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title'Edit Pin #' ~ pin.id %}
+
+{% block body %}
+
+
+<div class="row ">
+    <div class="col-md-6 mx-auto ">
+        <h1>Update {{ pin.id }}</h1>
+        {% if( is_granted('ROLE_USER')) and app.user.is_verified() and app.user = pin.user  false %}
+            <p>role user</p>
+        {% endif %}
+
+        {{ include('pin/_form.html.twig',{submitButtonText:'update'}) }}
+    </div>
+</div>
+{% endblock %}

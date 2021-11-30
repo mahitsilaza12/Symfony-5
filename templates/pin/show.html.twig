@@ -1,0 +1,36 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}{{ pin.title }}!{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <article class=" pin bg-white rounded shadow">
+                <div class="mw-100 overflow-hidden">
+                    <a href="{{path('app_pins_edit',{id:pin.id})}}">
+                        <img style="width: 200px;height: 200px; box-shadow: black;" src="{{ (pin.imageName ? vich_uploader_asset(pin) : asset('imagedefault/default.jpg')) }}" alt="{{ pin.title}}"
+                             class="w-100 rounded-top" >
+                    </a>
+                </div>
+<div class="p-3">
+                <h1 class="  pt-3 pl-3 mt-3" > <a class="text-secondary text-decoration-none " href="{{path('app_pins_show',{id : pin.id} )}}"> {{pin.title}}</a></h1>
+                                        <p class=" pl-3 pb-3 text-center  text-muted">Submitted {{ pin.createdAt|date }}</p>
+                <p class=" pl-3 pb-3 text-center  text-muted" >Submitted {{ pin.user.fullname }}</p>
+                                        <p class="pl-3 pr-3 pb-3 text-break">{{pin.description|u.truncate(20,'...', true)}}</p>
+
+    {%  if(app.user == pin.user) %}
+                <div class=" pl-3 pt-3 pb-3">
+                    <a href="{{path('app_pins_edit',{id:pin.id})}}"> <buttom class="btn btn-dark">Edit</buttom> </a>
+                    <a href="{{path('app_pins_delete',{id:pin.id})}}" onclick="alert('salama e')"><buttom class="btn btn-danger">Supprimer</buttom> </a>
+                    <a href="{{path('app_home')}}"><buttom class="btn btn-info">Retour</buttom> </a>
+                </div>
+    {% endif %}
+</div>
+            </article>
+
+        </div>
+    </div>
+
+
+{% endblock %}
